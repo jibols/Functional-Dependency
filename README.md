@@ -13,12 +13,12 @@ Pandas is required for data manipulation.
 ```
 pip install pandas
 ```
-Violation occurred at 0 in position 13
-Violation occurred at 13943797 in position 19
-Violation occurred at 0 in position 20
-Violation occurred at 13943797 in position 26
-Violation occurred at 0 in position 28
-Violation occurred at 0 in position 33
+Violation occurred at 0 in position 13.
+Violation occurred at 13943797 in position 19.
+Violation occurred at 0 in position 20.
+Violation occurred at 13943797 in position 26.
+Violation occurred at 0 in position 28.
+Violation occurred at 0 in position 33.
 Violation occurred at 13943797 in position 34
 Violation occurred at 13943797 in position 39
 Violation occurred at 0 in position 41
