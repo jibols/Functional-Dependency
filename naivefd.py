@@ -30,11 +30,11 @@ def groups(x):
         # Initialize counter to determine number of violations
         violation = 0
         # Loop through the items in the list 
-        for value in x.values():
+        for key, value in x.items():
             for i, e in enumerate(value):
                 if compare(value[0],e) != 0:
                     violation += 1
-                    print("Violation occurred at", int(e) , "in position", i)                        
+                    print("For account_id", key, "violation detected with account_number", int(e) , "in position", i)                        
             
         print("Number of violations",violation)
 
