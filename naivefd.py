@@ -28,25 +28,17 @@ for item in acct_ids:
 # Function that does x,y,z
 def groups(x):
         # Initialize counter to determine number of violations
-        bad=0
-        baddest=[]
-        for key,value in x.items():
-            if len(value) != 1:
-                    print("The first occurrence of account number for ", key , " is", value[0])
-                    for i in value:
-                            if compare(value[0],i) != 0:
-                                    bad+= 1
-                                    baddest.append(value.index(i))
-                                    print("Violation occurred at", i, "in position", value.index(i))                            
-            else:
-                    print("The only occurrence of account number for ", key , " is", value[0])
-        print("Number of violations", bad)
-        print(baddest)
-       
+        violation = 0
+        # Loop through the items in the list 
+        for value in x.values():
+            for i, e in enumerate(value):
+                if compare(value[0],e) != 0:
+                    violation += 1
+                    print("Violation occurred at", int(e) , "in position", i)                        
+            
+        print("Number of violations",violation)
 
 
-
-
-
-
-groups(my_dict)
+if __name__ == "__main__":
+    groups(my_dict)
+   
