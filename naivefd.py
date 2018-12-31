@@ -1,15 +1,17 @@
 import pandas as pd
 from collections import defaultdict
+import numpy as np
 
 # Read data from csv file 
-data = pd.read_csv("C:\\Users\\Ajibola Vincent\\Documents\\Udacity\\ay.csv")
+data = pd.read_csv("C:\\Users\\Ajibola Vincent\\Documents\\Udacity\\ay1.csv")
+# Locate all indexes with null values in the account number column
+nulls = data.loc[data['account_nbr'].isnull()].index.values
 
-# Function to compare two elements of a list 
+# Function to compare elememnts in a container
 def compare(a, b):
         return (a > b) - (a < b)
 
 # Convert the relevant columns to list for easy handling 
-#accts = data['account_nbr'].tolist()
 acct_ids = data['account_id'].unique().tolist()
 
 # create an empty dictionary 
@@ -19,11 +21,9 @@ for item in acct_ids:
     mylist  = data[data['account_id'] == item]['account_nbr']
     my_dict.setdefault(item, []).extend(mylist.tolist())
 
-
 # Function that does x,y,z
-def groups(x):
+def group(x):
         tools = []
-        # Initialize counter to determine number of violations
         # Loop through the items in the list 
         for values in x.values():
                 for e in values:
@@ -33,11 +33,15 @@ def groups(x):
 
 
 def fd(alist):
-        for i in  data[data['account_nbr'].isin(alist)].index.get_values():
-                print("Violation at index", i, "dataframe")
+        truth = data[data['account_nbr'].isin(alist)].index.get_values()
+        truth = np.sort(np.append(truth,nulls))
+        print("There are",len(truth), " violations in the dataset")
+        for i in truth:                
+                print("Violation at index", i+2, "in excel sheet")
+ 
                 
                 
 
 if __name__ == "__main__":
-    fd(groups(my_dict))
+    fd(group(my_dict))
 
