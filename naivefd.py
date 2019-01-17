@@ -1,11 +1,14 @@
 import pandas as pd
 from collections import defaultdict
 import numpy as np
+import time
 
 # Read data from csv file 
 data = pd.read_csv("C:\\Users\\Ajibola Vincent\\Documents\\Udacity\\ay1.csv")
 # Locate all indexes with null values in the account number column
 nulls = data.loc[data['account_nbr'].isnull()].index.values
+# Delete the null values
+#data = data.dropna() 
 
 # Function to compare elememnts in a container
 def compare(a, b):
@@ -31,17 +34,21 @@ def group(x):
                                 tools.append(e)
         return tools
 
-
 def fd(alist):
         truth = data[data['account_nbr'].isin(alist)].index.get_values()
         truth = np.sort(np.append(truth,nulls))
         print("There are",len(truth), " violations in the dataset")
-        for i in truth:                
-                print("Violation at index", i+2, "in excel sheet")
+        '''for i in truth:                
+                print("Violation at index", i+2, "in excel sheet")'''
+        # Delete the violations and write to excel
+        cleaneddata = data.drop(data.index[truth])
+        cleaneddata.to_csv("C:\\Users\\Ajibola Vincent\\Documents\\Udacity\\ay2.csv", encoding='utf-8', index=False)
  
-                
-                
+                            
 
 if __name__ == "__main__":
-    fd(group(my_dict))
+        start = time.time()
+        fd(group(my_dict))
+        end = time.time()
+        print(end - start)
 
