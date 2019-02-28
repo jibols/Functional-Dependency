@@ -1,6 +1,6 @@
-# Naive-Functional-Dependency
+# Functional-Dependency
 
-Naive implementation of Functional Dependency
+Implementation of Functional Dependency using both Pandas and PySpark for data manipulation.
 
 ## Getting Started
 
@@ -12,4 +12,5 @@ Pandas is required for data manipulation.
 
 ```
 pip install pandas
+pip install pyspark
 ```
