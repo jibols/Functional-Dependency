@@ -4,7 +4,7 @@ import numpy as np
 import time
 
 # Read data from csv file 
-data = pd.read_csv("C:\\Users\\Ajibola Vincent\\Documents\\Udacity\\ay1.csv")
+data = pd.read_csv("/ay1.csv")
 # Locate all indexes with null values in the account number column
 nulls = data.loc[data['account_nbr'].isnull()].index.values
 # Delete the null values
